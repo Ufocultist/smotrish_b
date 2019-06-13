@@ -1,8 +1,10 @@
 package org.myftp.ufocult.smotrish.controller;
 
 import org.myftp.ufocult.smotrish.domain.Channel;
+import org.myftp.ufocult.smotrish.domain.User;
 import org.myftp.ufocult.smotrish.repos.ChannelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,7 @@ public class MainController {
 
     @PostMapping("/main")
     public String addChannel(
+            @AuthenticationPrincipal User user,
             @RequestParam String name,
             @RequestParam Integer number,
             Map<String, Object> model
@@ -38,6 +41,8 @@ public class MainController {
         channelRepo.save(channel);
 
         Iterable<Channel> channels = channelRepo.findAll();
+
+
         model.put("channels", channels);
 
         return "main";
