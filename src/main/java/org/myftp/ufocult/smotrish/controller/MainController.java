@@ -1,4 +1,4 @@
-package org.myftp.ufocult.smotrish;
+package org.myftp.ufocult.smotrish.controller;
 
 import org.myftp.ufocult.smotrish.domain.Channel;
 import org.myftp.ufocult.smotrish.repos.ChannelRepo;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private ChannelRepo channelRepo;
 
